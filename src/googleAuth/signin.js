@@ -12,13 +12,15 @@ function Signin({ setValue }) {
     }
   }, []);
 
-  console.log(items)
+  console.log(items);
 
   const handleClick = () => {
-    signInWithPopup(auth, provider).then((data) => {
-      setValue(data.user.email);
-      localStorage.setItem("email", data.user.email);
-    });
+    signInWithPopup(auth, provider)
+      .then((data) => {
+        setValue(data.user.email);
+        localStorage.setItem("email", data.user.email);
+      })
+      .catch((error) => alert(error.message));
   };
 
   useEffect(() => {
